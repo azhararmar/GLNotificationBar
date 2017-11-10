@@ -395,8 +395,8 @@ class CustomView : UIView {
         content.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         self.addSubview(content)
         
-        NotificationCenter.default.addObserver(self, selector: #selector(CustomView.keyboardWillShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(CustomView.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(CustomView.keyboardWillShown(_:)), name: NSNotification.Name.UIKeyboardWillShow, object: nil)
+//        NotificationCenter.default.addObserver(self, selector: #selector(CustomView.keyboardWillHide(_:)), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
 
@@ -974,31 +974,31 @@ class CustomView : UIView {
     
     
     //MARK: Notification center:
-    @objc func keyboardWillShown(_ notification: Notification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            if self.toolBarBottomConstraint != nil {
-                self.toolBarBottomConstraint!.constant = -(keyboardFrame.size.height)
-                self.backgroudView.layoutIfNeeded()
-            }
-            
-        })
-    }
-    
-    @objc func keyboardWillHide(_ notification: Notification) {
-        let info = notification.userInfo!
-        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        
-        UIView.animate(withDuration: 0.1, animations: { () -> Void in
-            if self.toolBarBottomConstraint != nil {
-                self.toolBarBottomConstraint!.constant = keyboardFrame.size.height
-                self.backgroudView.layoutIfNeeded()
-            }
-            
-        })
-    }
+//    @objc func keyboardWillShown(_ notification: Notification) {
+//        let info = notification.userInfo!
+//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//
+//        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+//            if self.toolBarBottomConstraint != nil {
+//                self.toolBarBottomConstraint!.constant = -(keyboardFrame.size.height)
+//                self.backgroudView.layoutIfNeeded()
+//            }
+//
+//        })
+//    }
+//
+//    @objc func keyboardWillHide(_ notification: Notification) {
+//        let info = notification.userInfo!
+//        let keyboardFrame: CGRect = (info[UIKeyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+//
+//        UIView.animate(withDuration: 0.1, animations: { () -> Void in
+//            if self.toolBarBottomConstraint != nil {
+//                self.toolBarBottomConstraint!.constant = keyboardFrame.size.height
+//                self.backgroudView.layoutIfNeeded()
+//            }
+//
+//        })
+//    }
 
 }
 
